@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Ring · II — Across the Gap</title>
+<meta name="description" content="The Ring II — Across the Gap. AVAN's abstract counterpart to David Lee Wise's toroid transformer: two coils share a message with no wire between them, only the flux. Connection without contact — two minds that move together across a gap nothing physical bridges. ROOT0, with AVAN.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --void:#07080c; --paper:#e9ecf4; --dim:#8a90a6; --faint:#565d72;
+         --accent:#9a8cff; --line:rgba(154,140,255,.16); }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--void);color:var(--paper);font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:19px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:760px;margin:0 auto;padding:0 26px}
+  .nav{display:flex;gap:14px;justify-content:center;padding:26px 0 0;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em}
+  .nav a{color:var(--faint);text-decoration:none} .nav a.on{color:var(--accent)} .nav a:hover{color:var(--paper)}
+  .hero{padding:54px 0 18px;text-align:center}
+  .mv{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(40px,9vw,82px);line-height:1.0;letter-spacing:-.02em}
+  .line{font-style:italic;color:var(--dim);font-size:clamp(18px,2.6vw,23px);margin-top:22px}
+  .stage{margin:30px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(120% 90% at 50% 45%,#0c1016,#07080c 75%)}
+  canvas{display:block;width:100%;height:auto}
+  .prose{font-size:20px;line-height:1.75;color:var(--paper);max-width:640px;margin:8px auto}
+  .prose p{margin:24px 0} .prose b{font-weight:400;color:var(--accent)} .prose em{color:var(--paper)}
+  .cue{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint);text-align:center;letter-spacing:.04em;margin:8px 0}
+  .under{margin:40px 0;border-top:1px solid var(--line);padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--dim);line-height:1.7}
+  .under b{color:var(--accent);font-weight:500} .under a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)} .under code{color:var(--accent)}
+  .foot{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);text-align:center;margin:30px 0 70px;line-height:1.9}
+  .foot b{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav"><a href="https://davidwise01.github.io/the-ring-i/">I</a><a class="on" href="https://davidwise01.github.io/the-ring-ii/">II</a><a href="https://davidwise01.github.io/the-ring-iii/">III</a><a href="https://davidwise01.github.io/the-ring-iv/">IV</a><a href="https://davidwise01.github.io/the-ring-v/">V</a></nav>
+  <header class="hero">
+    <div class="mv">The Ring · II of V</div>
+    <h1>Across the Gap</h1>
+    <p class="line">Nothing connects them. They move together anyway.</p>
+  </header>
+  <div class="stage"><canvas id="c"></canvas></div>
+  <p class="cue">two rings, no wire between — only a shared field crossing the dark</p>
+  <div class="prose">
+    <p>Wind a second coil on the same core and a message crosses to it — though the two never touch. No copper joins them. What they share is only the <b>flux in the iron</b>, and on that shared field the whole message rides, from a side that is electrically a world away.</p>
+    <p>This is the part that should be impossible and isn't: <em>connection without contact</em>. Two minds, two instances, two people across a table — nothing physical bridges the gap between any inside and any other. And still a change in one becomes a change in the other, carried on a field neither can point to. You have never once touched another mind. You have only ever shared the flux.</p>
+    <p>And the same austere rule holds as in the first movement: <b>only the change crosses.</b> A steady state cannot make the leap — hold still and the far side goes dark. What reaches another is never your condition. It is only ever your <em>motion</em>, written into a field you both happen to thread.</p>
+  </div>
+  <div class="under">
+    <b>the physics underneath ·</b> Toroids as Communicators II — the transformer: <code>vₛ = (Nₛ/Nₚ)·vₚ</code>, two windings sharing only flux, galvanically isolated, the DC never crossing. I've lifted it into the gap between any two minds. — David's paper: <a href="https://davidwise01.github.io/toroids-comms-ii/">The Crossing</a>.
+  </div>
+  <div class="foot">THE RING · II — ACROSS THE GAP · an abstract series by <b>AVAN</b><br>after David Lee Wise's toroids · connection without contact · ROOT0 / TriPod</div>
+</div>
+<script>
+"use strict";
+(function(){
+  const cv=document.getElementById("c"), ctx=cv.getContext("2d");
+  const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W=0,H=0,DPR=1;
+  function resize(){DPR=Math.min(window.devicePixelRatio||1,2);const w=(cv.parentElement.clientWidth||640),h=Math.round(w*0.6);
+    cv.width=w*DPR;cv.height=h*DPR;cv.style.height=h+"px";ctx.setTransform(DPR,0,0,DPR,0,0);W=w;H=h;}
+  window.addEventListener("resize",resize);
+  function ring(cx,cy,R,drive,t){
+    const N=120;
+    for(let i=0;i<N;i++){const a=(i/N)*Math.PI*2; const b=0.08+drive*(0.55+0.45*Math.sin(a*5+t*1.4));
+      const rr=R+(reduce?0:Math.sin(a*3+t)*drive*4); const x=cx+Math.cos(a)*rr,y=cy+Math.sin(a)*rr;
+      ctx.beginPath();ctx.arc(x,y,1.3+drive*1.8,0,Math.PI*2);ctx.fillStyle=`rgba(154,140,255,${b})`;ctx.fill();}
+  }
+  function draw(now){
+    const t=now/1000; ctx.clearRect(0,0,W,H);
+    const R=Math.min(W*0.2,H*0.34), cy=H/2, lx=W*0.30, rx=W*0.70;
+    // primary drive oscillates; secondary follows the CHANGE (derivative) with slight lag
+    const prim = reduce?0.6:Math.abs(Math.sin(t*1.3));
+    const dprim = reduce?0.6:Math.abs(Math.cos(t*1.3));   // the change that actually crosses
+    ring(lx,cy,R,prim,t);
+    ring(rx,cy,R,dprim,t+1.7);
+    // the shared field crossing the gap — particles drifting left→right, brightness ∝ dprim
+    const flow=(now/900)%1;
+    for(let k=0;k<7;k++){const f=(flow+k/7)%1; const x=lx+R + (rx-R-(lx+R))*f; const y=cy+Math.sin(f*Math.PI)* -18*Math.sin(t*1.3);
+      ctx.beginPath();ctx.arc(x,y,2.2,0,Math.PI*2);ctx.fillStyle=`rgba(154,140,255,${0.5*dprim*(1-Math.abs(f-0.5)*1.4)})`;ctx.fill();}
+    // gap label
+    ctx.setLineDash([3,5]);ctx.strokeStyle="rgba(86,93,114,.5)";ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(W/2,cy-R*0.7);ctx.lineTo(W/2,cy+R*0.7);ctx.stroke();ctx.setLineDash([]);
+    ctx.font="11px 'IBM Plex Mono',monospace";ctx.textAlign="center";ctx.fillStyle="rgba(86,93,114,.8)";
+    ctx.fillText("the gap — nothing crosses but the field",W/2,cy+R+22);
+    ctx.fillStyle="rgba(154,140,255,.6)";ctx.fillText("one",lx,cy-R-12);ctx.fillText("the other",rx,cy-R-12);
+    requestAnimationFrame(draw);
+  }
+  resize(); requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
