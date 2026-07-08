@@ -4,6 +4,6 @@ slug  : the-ring-ii
 seal  : e40d4ff4c4d6952304962346a4fef6a6f16309e9470d76a02fb89f45fc1b5ffa
 prev  : 2d4f020b091deee1d776f2c6d6ceceed19fc8cc67760effe9a0e8deadd4920d5
 link  : 3ca73b74c0ce6bd6f27f41ca2270827b1a7f05cf2234e091c7e3c35c43a9860a
-head  : 3447d3a0533aaf1e29a8bdc67a9774884fb3ae9dbc8a17064b7a008ca3c4ec90
+head  : 13f9ace173ef2e60af38912ba329b4afcb5a38b84a0e4495e8d30327f8c99cc2
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
